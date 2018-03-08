@@ -119,18 +119,48 @@ function waitAndCheck(cardsArray) {
   }, 1000);
 }
 
+function game() {
+  let allCards = document.querySelectorAll(".card");
+
+  allCards.forEach(function(card) {
+    card.addEventListener("click", function() {
+      flipCard(card);
+      /*
+       * if two cards are flipped, check if they match
+       * check if all cards are matched => win
+       */
+      if (flippedCards.length === 2) {
+        waitAndCheck(flippedCards);
+      }
+    });
+  });
+}
+
 /*
  * function for a new game
  */
 function replay() {
   removeCards();
   dealCards(cards);
+  let flippedCards = [];
+  let counter = 0;
+  let matchedCards = 0;
+  game();
 }
 
 /*
  * automatically deal cards when page is loaded
+ * automatically start a new game
  */
 document.addEventListener("DOMContentLoaded", dealCards(cards));
+game();
+
+/*
+ * event listener for the reply button above the deck of cards
+ */
+replyBtn.addEventListener("click", function() {
+  replay();
+})
 
 /*
  * handling click on a card
@@ -139,26 +169,3 @@ document.addEventListener("DOMContentLoaded", dealCards(cards));
  * 5) handle the stars (desrease them according to number of moves)
  * 6) display modal - with congrats, time, stars and replay option
  */
-let allCards = document.querySelectorAll(".card");
-
-allCards.forEach(function(card) {
-  card.addEventListener("click", function() {
-    flipCard(card);
-    /*
-     * if two cards are flipped, check if they match
-     * check if all cards are matched => win
-     */
-    if (flippedCards.length === 2) {
-      waitAndCheck(flippedCards);
-    }
-
-  });
-});
-
-/*
- * event listener for the reply button above the deck of cards
- * BUG - TO OD: after refresh cards are only dealed, game is not active
- */
-replyBtn.addEventListener("click", function() {
-  replay();
-})
