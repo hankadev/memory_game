@@ -1,13 +1,14 @@
 /*
  * declaring variables for the whole deck and for the replay button
  * empty array for storing flipped cards
- * initilizing the counter for number of moves
+ * initilizing the counter for number of moves and selecting element for counter from DOM
  * declaring array holding the content of the cards
  */
 let deck = document.querySelector(".deck");
 let replyBtn = document.querySelector(".replay");
 let flippedCards = [];
 let counter = 0;
+let moves = document.querySelector(".moves");
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -143,6 +144,7 @@ allCards.forEach(function(card) {
     if (flippedCards.length === 2) {
       waitAndCheck(flippedCards);
       counter += 1;
+      moves.innerHTML = counter;
     }
   });
 });
