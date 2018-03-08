@@ -26,7 +26,7 @@ let cards = ["<i class=\"fas fa-gamepad\"></i>",
  */
 
 function shuffle(array) {
-  var currentIndex = array.length,
+  let currentIndex = array.length,
     temporaryValue, randomIndex;
 
   while (currentIndex !== 0) {
@@ -40,7 +40,13 @@ function shuffle(array) {
   return array;
 }
 
+/**
+ * function for dealing cards in shuffled order
+ * create li items with class card
+ * adds content to li items - the fontawesome icons
+ */
 function dealCards(cards) {
+  shuffle(cards);
   for (let i = 0; i < cards.length; i++) {
     let cardItem = document.createElement("li");
     cardItem.className = "card";
@@ -50,5 +56,4 @@ function dealCards(cards) {
   }
 }
 
-shuffle(cards);
 dealCards(cards);
