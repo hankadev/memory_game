@@ -96,6 +96,8 @@ function hideCards(card1, card2) {
  * shows both card for a second (1000 miliseconds)
  * checks if the cards matched or not
  * if they do, marks them as matched, if not, flippes them back
+ * incrementing the counter for number of removeCards
+ * displaying the number of moves in DOM
  */
 function waitAndCheck(cardsArray) {
   setTimeout(function() {
@@ -106,6 +108,8 @@ function waitAndCheck(cardsArray) {
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
     }
+    counter += 1;
+    moves.innerHTML = counter;
   }, 1000);
 }
 
@@ -124,11 +128,6 @@ document.addEventListener("DOMContentLoaded", dealCards(cards));
 
 /*
  * handling click on a card
- * 1) show card after click => call flipCard functions
- * 2) check if list flippedCards has alredy 2 cards to be matched
- * => if they match, use matched function on both cards
- * => if they do not match, hide them (remove them from list and remove css class)
- * => increment the counter for moves done by player and display it on the page
  * 3) check if all cards have been matched
  * 4) implement timer
  * 5) handle the stars (desrease them according to number of moves)
@@ -143,9 +142,10 @@ allCards.forEach(function(card) {
     /* if two cards are flipped, check if they match */
     if (flippedCards.length === 2) {
       waitAndCheck(flippedCards);
-      counter += 1;
-      moves.innerHTML = counter;
     }
+
+    /* what to do after a flip of two cards */
+
   });
 });
 
