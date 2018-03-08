@@ -9,6 +9,7 @@ let replyBtn = document.querySelector(".replay");
 let flippedCards = [];
 let counter = 0;
 let moves = document.querySelector(".moves");
+let matchedCards = 0;
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -98,6 +99,7 @@ function hideCards(card1, card2) {
  * if they do, marks them as matched, if not, flippes them back
  * incrementing the counter for number of removeCards
  * displaying the number of moves in DOM
+ * checks if all cards are matched
  */
 function waitAndCheck(cardsArray) {
   setTimeout(function() {
@@ -105,6 +107,10 @@ function waitAndCheck(cardsArray) {
     icon2 = cardsArray[1].innerHTML;
     if (icon1 === icon2) {
       matched(cardsArray[0], cardsArray[1]);
+      matchedCards += 2;
+      if (matchedCards === 16) {
+        console.log("YOU NAILED IT!");
+      }
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
     }
@@ -138,19 +144,20 @@ let allCards = document.querySelectorAll(".card");
 allCards.forEach(function(card) {
   card.addEventListener("click", function() {
     flipCard(card);
-
-    /* if two cards are flipped, check if they match */
+    /*
+     * if two cards are flipped, check if they match
+     * check if all cards are matched => win
+     */
     if (flippedCards.length === 2) {
       waitAndCheck(flippedCards);
     }
-
-    /* what to do after a flip of two cards */
 
   });
 });
 
 /*
  * event listener for the reply button above the deck of cards
+ * BUG - TO OD: after refresh cards are only dealed, game is not active
  */
 replyBtn.addEventListener("click", function() {
   replay();
