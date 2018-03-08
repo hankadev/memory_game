@@ -50,6 +50,7 @@ body {
   width: 500px;
   height: 500px;
   padding: 0;
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
