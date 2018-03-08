@@ -22,14 +22,33 @@ let cards = ["<i class=\"fas fa-gamepad\"></i>",
 ];
 
 /**
- * shuffle function
+ * shuffle function from http://stackoverflow.com/a/2450976
  */
 
-/** working piece of code for adding card to board
- * need to be used on shuffled array and via loop
-  let cardItem = document.createElement("li");
-  cardItem.className = "card";
-  let icon = "<i class=\"fas fa-ambulance\"></i>"
-  cardItem.innerHTML = icon;
-  deck.appendChild(cardItem);
-*/
+function shuffle(array) {
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function dealCards(cards) {
+  for (let i = 0; i < cards.length; i++) {
+    let cardItem = document.createElement("li");
+    cardItem.className = "card";
+    let icon = cards[i];
+    cardItem.innerHTML = icon;
+    deck.appendChild(cardItem);
+  }
+}
+
+shuffle(cards);
+dealCards(cards);
