@@ -1,8 +1,10 @@
 /*
  * declaring a variable for the whole deck div
+ * empty array for storing flipped cards
  * declaring array holding the content of the cards
  */
 let deck = document.querySelector(".deck");
+let flippedCards = [];
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -73,14 +75,34 @@ function flipCard(card) {
   flippedCards.push(card);
 }
 
-function matched(card) {
-  card.classList.add("matched");
-  flippedCards.pop(card);
+function matched(card1, card2) {
+  card1.classList.add("matched");
+  card2.classList.add("matched");
+  flippedCards = [];
 }
 
-function hideCard(card) {
-  card.classList.remove("show");
-  flippedCards.pop(card);
+function hideCards(card1, card2) {
+  card1.classList.remove("show");
+  card2.classList.remove("show");
+  flippedCards = [];
+}
+
+/*
+ * function has as argument an array of flipped cardsArray
+ * shows both card for a second (1000 miliseconds)
+ * checks if the cards matched or not
+ * if they do, marks them as matched, if not, flippes them back
+ */
+function waitAndCheck(cardsArray) {
+  setTimeout(function() {
+    icon1 = cardsArray[0].innerHTML;
+    icon2 = cardsArray[1].innerHTML;
+    if (icon1 === icon2) {
+      matched(cardsArray[0], cardsArray[1]);
+    } else {
+      hideCards(cardsArray[0], cardsArray[1]);
+    }
+  }, 1000);
 }
 
 /*
@@ -109,10 +131,14 @@ document.addEventListener("DOMContentLoaded", dealCards(cards));
  * 6) display modal - with congrats, time, stars and replay option
  */
 let allCards = document.querySelectorAll(".card");
-let flippedCards = [];
 
 allCards.forEach(function(card) {
   card.addEventListener("click", function() {
-    console.log("clik on the card");
+    flipCard(card);
+
+    /* if two cards are flipped, check if they match */
+    if (flippedCards.length === 2) {
+      waitAndCheck(flippedCards);
+    }
   });
 });
