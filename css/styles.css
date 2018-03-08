@@ -79,10 +79,20 @@ body {
   -ms-flex-align: center;
   align-items: center;
   list-style: none;
-  color: #fff;
+  color: #000;
   font-size: 2rem;
   background-color: #527;
   border: 1px solid #fff;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.show {
+  color: #fff;
+  cursor: default;
+}
+
+.matched {
+  background-color: #99f;
+  cursor: default;
 }
