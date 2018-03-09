@@ -7,6 +7,7 @@
 let deck = document.querySelector(".deck");
 let replyBtn = document.querySelector(".replay");
 let modalWindow = document.querySelector(".modal");
+let closeBtn = document.querySelector(".closeBtn");
 let flippedCards = [];
 let counter = 0;
 let moves = document.querySelector(".moves");
@@ -175,7 +176,18 @@ game();
  */
 replyBtn.addEventListener("click", function() {
   replay();
-})
+});
+
+/*
+ * event listener for the close button on modal pop-up window
+ */
+closeBtn.addEventListener("click", function() {
+  hideModal();
+});
+
+modalWindow.addEventListener("click", function() {
+  hideModal();
+});
 
 /*
  * handling click on a card

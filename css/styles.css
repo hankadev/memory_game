@@ -47,24 +47,25 @@ body {
 /* MODAL WINDOW */
 
 .modal {
+  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 1;
-  background-color: #000;
-  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 .modalMessage {
   position: fixed;
   top: 30%;
-  left: 30%;
-  width: 40%;
+  left: calc(50% - 200px);
+  width: 400px;
   min-height: 250px;
   margin: 0 auto;
-  z-index: 2;
+  z-index: 3;
   background-color: #fff;
   opacity: 1;
 }
@@ -74,11 +75,20 @@ body {
   padding-right: 20px;
 }
 
+.closeBtn {
+  cursor: pointer;
+}
+
 .message {
   text-align: center;
   font-size: 1.5em;
   padding-bottom: 10px;
   margin-top: 0;
+  color: #d05;
+}
+
+.thumb {
+  margin-right: 10px;
 }
 
 /* DECK OF CARDS */
@@ -117,7 +127,7 @@ body {
   -ms-flex-align: center;
   align-items: center;
   list-style: none;
-  color: #000;
+  color: #527;
   font-size: 2rem;
   background-color: #527;
   border: 1px solid #fff;
