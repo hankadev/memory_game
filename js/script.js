@@ -120,6 +120,8 @@ function waitAndCheck(cardsArray) {
       matched(cardsArray[0], cardsArray[1]);
       cardsToFlip = 2;
       matchedCards += 2;
+      cardsArray[0].removeEventListener("click", listen);
+      cardsArray[1].removeEventListener("click", listen);
       if (matchedCards === 16) {
         showModal();
       }
@@ -132,20 +134,21 @@ function waitAndCheck(cardsArray) {
   }, 750);
 }
 
+let listen = function() {
+  if (cardsToFlip > 0) {
+    cardsToFlip -= 1;
+    flipCard(this);
+  }
+  if (cardsToFlip === 0) {
+    cardsToFlip = -1;
+    waitAndCheck(flippedCards);
+  }
+};
+
 function game() {
   let allCards = document.querySelectorAll(".card");
-
   allCards.forEach(function(card) {
-    card.addEventListener("click", function() {
-      if (cardsToFlip > 0) {
-        cardsToFlip -= 1;
-        flipCard(card);
-      }
-      if (cardsToFlip === 0) {
-        cardsToFlip = -1;
-        waitAndCheck(flippedCards);
-      }
-    });
+    card.addEventListener("click", listen);
   });
 }
 
