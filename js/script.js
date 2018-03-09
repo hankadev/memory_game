@@ -6,6 +6,7 @@
  */
 let deck = document.querySelector(".deck");
 let replyBtn = document.querySelector(".replay");
+let modalWindow = document.querySelector(".modal");
 let flippedCards = [];
 let counter = 0;
 let moves = document.querySelector(".moves");
@@ -93,6 +94,14 @@ function hideCards(card1, card2) {
   flippedCards = [];
 }
 
+function showModal() {
+  modalWindow.style.display = "flex";
+}
+
+function hideModal() {
+  modalWindow.style.display = "none";
+}
+
 /*
  * function has as argument an array of flipped cardsArray
  * shows both card for a second (750 miliseconds)
@@ -112,6 +121,7 @@ function waitAndCheck(cardsArray) {
       matchedCards += 2;
       if (matchedCards === 16) {
         console.log("YOU NAILED IT!");
+        showModal();
       }
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
@@ -131,10 +141,12 @@ function game() {
         cardsToFlip -= 1;
         flipCard(card);
       }
-      if (flippedCards.length === 2) {
+      if (cardsToFlip === 0) {
         cardsToFlip = -1;
         waitAndCheck(flippedCards);
       }
+      console.log("to flip", cardsToFlip);
+      console.log("matched", matchedCards);
     });
   });
 }
@@ -143,11 +155,14 @@ function game() {
  * function for a new game
  */
 function replay() {
+  hideModal();
   removeCards();
   dealCards(cards);
-  let flippedCards = [];
-  let counter = 0;
-  let matchedCards = 0;
+  flippedCards = [];
+  counter = 0;
+  moves.innerHTML = counter;
+  matchedCards = 0;
+  cardsToFlip = 2;
   game();
 }
 
