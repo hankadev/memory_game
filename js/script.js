@@ -99,7 +99,7 @@ function hideCards(card1, card2) {
  * if they do, marks them as matched, if not, flippes them back
  * incrementing the counter for number of removeCards
  * displaying the number of moves in DOM
- * checks if all cards are matched
+ * checks if all cards are matched => win
  */
 function waitAndCheck(cardsArray) {
   setTimeout(function() {
@@ -127,10 +127,7 @@ function game() {
       if (flippedCards.length === 0 || flippedCards.length === 1) {
         flipCard(card);
       }
-      /*
-       * if two cards are flipped, check if they match
-       * check if all cards are matched => win
-       */
+
       if (flippedCards.length === 2) {
         waitAndCheck(flippedCards);
       }
@@ -166,7 +163,6 @@ replyBtn.addEventListener("click", function() {
 
 /*
  * handling click on a card
- * 3) check if all cards have been matched
  * 4) implement timer
  * 5) handle the stars (desrease them according to number of moves)
  * 6) display modal - with congrats, time, stars and replay option
