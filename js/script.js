@@ -120,7 +120,6 @@ function waitAndCheck(cardsArray) {
       cardsToFlip = 2;
       matchedCards += 2;
       if (matchedCards === 16) {
-        console.log("YOU NAILED IT!");
         showModal();
       }
     } else {
