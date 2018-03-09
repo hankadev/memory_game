@@ -124,7 +124,9 @@ function game() {
 
   allCards.forEach(function(card) {
     card.addEventListener("click", function() {
-      flipCard(card);
+      if (flippedCards.length === 0 || flippedCards.length === 1) {
+        flipCard(card);
+      }
       /*
        * if two cards are flipped, check if they match
        * check if all cards are matched => win
