@@ -144,8 +144,6 @@ function game() {
         cardsToFlip = -1;
         waitAndCheck(flippedCards);
       }
-      console.log("to flip", cardsToFlip);
-      console.log("matched", matchedCards);
     });
   });
 }
