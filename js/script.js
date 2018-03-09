@@ -10,6 +10,7 @@ let flippedCards = [];
 let counter = 0;
 let moves = document.querySelector(".moves");
 let matchedCards = 0;
+let cardsToFlip = 2;
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -94,7 +95,7 @@ function hideCards(card1, card2) {
 
 /*
  * function has as argument an array of flipped cardsArray
- * shows both card for a second (1000 miliseconds)
+ * shows both card for a second (750 miliseconds)
  * checks if the cards matched or not
  * if they do, marks them as matched, if not, flippes them back
  * incrementing the counter for number of removeCards
@@ -107,16 +108,18 @@ function waitAndCheck(cardsArray) {
     icon2 = cardsArray[1].innerHTML;
     if (icon1 === icon2) {
       matched(cardsArray[0], cardsArray[1]);
+      cardsToFlip = 2;
       matchedCards += 2;
       if (matchedCards === 16) {
         console.log("YOU NAILED IT!");
       }
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
+      cardsToFlip = 2;
     }
     counter += 1;
     moves.innerHTML = counter;
-  }, 1000);
+  }, 750);
 }
 
 function game() {
@@ -124,11 +127,12 @@ function game() {
 
   allCards.forEach(function(card) {
     card.addEventListener("click", function() {
-      if (flippedCards.length === 0 || flippedCards.length === 1) {
+      if (cardsToFlip > 0) {
+        cardsToFlip -= 1;
         flipCard(card);
       }
-
       if (flippedCards.length === 2) {
+        cardsToFlip = -1;
         waitAndCheck(flippedCards);
       }
     });
