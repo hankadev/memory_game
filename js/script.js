@@ -120,13 +120,13 @@ function waitAndCheck(cardsArray) {
       matched(cardsArray[0], cardsArray[1]);
       cardsToFlip = 2;
       matchedCards += 2;
-      cardsArray[0].removeEventListener("click", listen);
-      cardsArray[1].removeEventListener("click", listen);
       if (matchedCards === 16) {
         showModal();
       }
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
+      cardsArray[0].addEventListener("click", listen);
+      cardsArray[1].addEventListener("click", listen);
       cardsToFlip = 2;
     }
     counter += 1;
@@ -137,6 +137,7 @@ function waitAndCheck(cardsArray) {
 let listen = function() {
   if (cardsToFlip > 0) {
     cardsToFlip -= 1;
+    this.removeEventListener("click", listen);
     flipCard(this);
   }
   if (cardsToFlip === 0) {
