@@ -16,6 +16,7 @@ let emptyStar = "<i class=\"far fa-star\"></i>";
 let star1 = document.querySelector(".star1");
 let star2 = document.querySelector(".star2");
 let star3 = document.querySelector(".star3");
+let scoreMoves = document.querySelector(".scoreMoves");
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -104,9 +105,13 @@ function hideCards(card1, card2) {
 /*
  *functions for showing and hiding the pop-up modal window
  */
-function showModal() {
+function showModal(moves) {
   setTimeout(function() {
     modalWindow.style.display = "flex";
+    scoreMoves.innerHTML = moves;
+    let scoreStars = document.querySelector(".scoreStars");
+    let stars = document.querySelector(".stars");
+    scoreStars.innerHTML = stars.innerHTML;
   }, 1000);
 }
 
@@ -120,13 +125,13 @@ function hideModal() {
  */
 
 function decreaseStar(moves) {
-  if (moves > 12) {
+  if (moves > 15) {
     star3.innerHTML = emptyStar;
   }
-  if (moves > 16) {
+  if (moves > 20) {
     star2.innerHTML = emptyStar;
   }
-  if (moves > 20) {
+  if (moves > 25) {
     star1.innerHTML = emptyStar;
   }
 }
@@ -154,9 +159,6 @@ function waitAndCheck(cardsArray) {
       matched(cardsArray[0], cardsArray[1]);
       cardsToFlip = 2;
       matchedCards += 2;
-      if (matchedCards === 16) {
-        showModal();
-      }
     } else {
       hideCards(cardsArray[0], cardsArray[1]);
       cardsArray[0].addEventListener("click", listen);
@@ -166,6 +168,9 @@ function waitAndCheck(cardsArray) {
     counter += 1;
     moves.innerHTML = counter;
     decreaseStar(counter);
+    if (matchedCards === 16) {
+      showModal(counter);
+    }
   }, 750);
 }
 
@@ -236,8 +241,6 @@ modalWindow.addEventListener("click", function() {
 });
 
 /*
- * handling click on a card
- * -- fix the issue with the cards that are flipped... flipped at the beginning???
- * -- implement timer
- * -- add to modal - time, stars and replay option
+ * -- implement timer and add time in modal
+ * -- put replay button into modal
  */

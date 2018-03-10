@@ -56,6 +56,7 @@ body {
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
+  text-align: center;
 }
 
 .modalMessage {
@@ -68,6 +69,8 @@ body {
   z-index: 3;
   background-color: #fff;
   opacity: 1;
+  border: 6px solid #d05;
+  border-radius: 5px;
 }
 
 .close {
@@ -89,6 +92,12 @@ body {
 
 .thumb {
   margin-right: 10px;
+}
+
+.scoreStars li {
+  color: #eb0;
+  display: inline-block;
+  list-style: none;
 }
 
 /* DECK OF CARDS */
