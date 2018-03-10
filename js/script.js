@@ -102,7 +102,9 @@ function hideCards(card1, card2) {
  *functions for showing and hiding the pop-up modal window
  */
 function showModal() {
-  modalWindow.style.display = "flex";
+  setTimeout(function() {
+    modalWindow.style.display = "flex";
+  }, 1000);
 }
 
 function hideModal() {
@@ -197,6 +199,10 @@ function replay() {
   matchedCards = 0;
   cardsToFlip = 2;
   game();
+}
+
+function turnEffect(card) {
+  card.style.transform
 }
 
 /*
