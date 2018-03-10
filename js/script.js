@@ -177,6 +177,7 @@ let listen = function() {
 };
 
 function game() {
+  dealCards(cards)
   let allCards = document.querySelectorAll(".card");
   allCards.forEach(function(card) {
     card.addEventListener("click", listen);
@@ -190,7 +191,6 @@ function replay() {
   hideModal();
   removeCards();
   resetStars();
-  dealCards(cards);
   flippedCards = [];
   counter = 0;
   moves.innerHTML = counter;
@@ -203,8 +203,9 @@ function replay() {
  * automatically deal cards when page is loaded
  * automatically start a new game
  */
-document.addEventListener("DOMContentLoaded", dealCards(cards));
-game();
+document.addEventListener("DOMContentLoaded", function() {
+  game();
+});
 
 /*
  * event listener for the reply button above the deck of cards
