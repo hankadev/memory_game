@@ -97,9 +97,15 @@ function matched(card1, card2) {
 }
 
 function hideCards(card1, card2) {
-  card1.classList.remove("show");
-  card2.classList.remove("show");
-  flippedCards = [];
+  setTimeout(function() {
+    card1.classList.remove("show");
+    card1.classList.toggle("shake");
+    card2.classList.remove("show");
+    card2.classList.toggle("shake");
+    flippedCards = [];
+  }, 750);
+  card1.classList.toggle("shake");
+  card2.classList.toggle("shake");
 }
 
 /*
