@@ -82,8 +82,11 @@ function removeCards(cards) {
  *functions for changing the css of cards based on their status during the game
  */
 function flipCard(card) {
-  card.classList.add("show");
-  flippedCards.push(card);
+  setTimeout(function() {
+    card.classList.toggle("flip");
+    card.classList.add("show");
+    flippedCards.push(card);
+  }, 300);
 }
 
 function matched(card1, card2) {
@@ -171,6 +174,7 @@ let listen = function() {
     cardsToFlip -= 1;
     this.removeEventListener("click", listen);
     flipCard(this);
+    this.classList.toggle("flip");
   }
   if (cardsToFlip === 0) {
     cardsToFlip = -1;
@@ -233,7 +237,7 @@ modalWindow.addEventListener("click", function() {
 
 /*
  * handling click on a card
- * 4) implement timer
- * 5) handle the stars (desrease them according to number of moves)
- * 6) display modal - with congrats, time, stars and replay option
+ * -- fix the issue with the cards that are flipped... flipped at the beginning???
+ * -- implement timer
+ * -- add to modal - time, stars and replay option
  */
