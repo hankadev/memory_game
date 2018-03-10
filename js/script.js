@@ -3,7 +3,7 @@
  * declaring array holding the content of the cards
  */
 let deck = document.querySelector(".deck");
-let replyBtn = document.querySelector(".replay");
+let replyBtn = document.querySelectorAll(".replay");
 let modalWindow = document.querySelector(".modal");
 let closeBtn = document.querySelector(".closeBtn");
 let flippedCards = [];
@@ -231,8 +231,10 @@ document.addEventListener("DOMContentLoaded", function() {
 /*
  * event listener for the reply button above the deck of cards
  */
-replyBtn.addEventListener("click", function() {
-  replay();
+replyBtn.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    replay();
+  });
 });
 
 /*
@@ -246,7 +248,7 @@ modalWindow.addEventListener("click", function() {
   hideModal();
 });
 
-/*
+/* TODO:
  * -- implement timer and add time in modal
  * -- put replay button into modal
  */

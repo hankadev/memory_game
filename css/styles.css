@@ -26,6 +26,7 @@ body {
 
 .stars {
   display: inline-block;
+  margin-right: 50px;
 }
 
 .stars li {
@@ -35,8 +36,7 @@ body {
 
 .replay {
   display: inline-block;
-  margin-left: 50px;
-  width: 50px;
+  min-width: 50px;
   padding: 10px;
   cursor: pointer;
   border: none;
