@@ -1,7 +1,5 @@
 /*
- * declaring variables for the whole deck and for the replay button
- * empty array for storing flipped cards
- * initilizing the counter for number of moves and selecting element for counter from DOM
+ * declaring all needed variables and selection all needed DOM elements
  * declaring array holding the content of the cards
  */
 let deck = document.querySelector(".deck");
@@ -13,6 +11,11 @@ let counter = 0;
 let moves = document.querySelector(".moves");
 let matchedCards = 0;
 let cardsToFlip = 2;
+let fullStar = "<i class=\"fas fa-star\"></i>";
+let emptyStar = "<i class=\"far fa-star\"></i>";
+let star1 = document.querySelector(".star1");
+let star2 = document.querySelector(".star2");
+let star3 = document.querySelector(".star3");
 let cards = ["<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-gamepad\"></i>",
   "<i class=\"fas fa-ambulance\"></i>",
@@ -95,12 +98,38 @@ function hideCards(card1, card2) {
   flippedCards = [];
 }
 
+/*
+ *functions for showing and hiding the pop-up modal window
+ */
 function showModal() {
   modalWindow.style.display = "flex";
 }
 
 function hideModal() {
   modalWindow.style.display = "none";
+}
+
+/*
+ * function for decreasing the stars score
+ * function for reseting stars to initial value - 3 full stars
+ */
+
+function decreaseStar(moves) {
+  if (moves > 12) {
+    star3.innerHTML = emptyStar;
+  }
+  if (moves > 16) {
+    star2.innerHTML = emptyStar;
+  }
+  if (moves > 20) {
+    star1.innerHTML = emptyStar;
+  }
+}
+
+function resetStars() {
+  star1.innerHTML = fullStar;
+  star2.innerHTML = fullStar;
+  star3.innerHTML = fullStar;
 }
 
 /*
@@ -131,6 +160,7 @@ function waitAndCheck(cardsArray) {
     }
     counter += 1;
     moves.innerHTML = counter;
+    decreaseStar(counter);
   }, 750);
 }
 
@@ -159,6 +189,7 @@ function game() {
 function replay() {
   hideModal();
   removeCards();
+  resetStars();
   dealCards(cards);
   flippedCards = [];
   counter = 0;
