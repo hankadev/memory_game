@@ -181,7 +181,6 @@ let interval;
 let startTimer = function() {
   interval = setInterval(function() {
     seconds += 1;
-    console.log("seconds:", seconds);
   }, 1000);
   this.removeEventListener("click", startTimer);
 };
