@@ -164,7 +164,6 @@ function waitAndCheck(cardsArray) {
 }
 
 let listen = function() {
-  startTimer();
   if (cardsToFlip > 0) {
     cardsToFlip -= 1;
     this.removeEventListener("click", listen);
@@ -182,6 +181,7 @@ let interval;
 function startTimer() {
   interval = setInterval(function() {
     seconds += 1;
+    console.log("seconds:", seconds);
   }, 1000);
 }
 
@@ -194,6 +194,7 @@ function convertTime(seconds) {
 
 function game() {
   dealCards(cards);
+  startTimer();
   let allCards = document.querySelectorAll(".card");
   allCards.forEach(function(card) {
     card.addEventListener("click", listen);
@@ -206,7 +207,7 @@ function replay() {
   resetStars();
   flippedCards = [];
   counter = 0;
-  let seconds = 0;
+  seconds = 0;
   moves.innerHTML = counter;
   matchedCards = 0;
   cardsToFlip = 2;
