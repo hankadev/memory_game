@@ -1,7 +1,3 @@
-/*
- * declaring all needed variables and selection all needed DOM elements
- * declaring array holding the content of the cards
- */
 let deck = document.querySelector(".deck");
 let replyBtn = document.querySelectorAll(".replay");
 let modalWindow = document.querySelector(".modal");
@@ -54,10 +50,6 @@ function shuffle(array) {
   return array;
 }
 
-/*
- * function for dealing cards in shuffled order
- * create cards, add style to them and fontawesome icon
- */
 function dealCards(cards) {
   shuffle(cards);
   for (let i = 0; i < cards.length; i++) {
@@ -69,9 +61,6 @@ function dealCards(cards) {
   }
 }
 
-/*
- * function for removing cards from DOM
- */
 function removeCards(cards) {
   let cardsToRemove = document.querySelectorAll(".card");
   for (let i = 0; i < cardsToRemove.length; i++) {
@@ -79,9 +68,6 @@ function removeCards(cards) {
   }
 }
 
-/*
- *functions for changing the css of cards based on their status during the game
- */
 function flipCard(card) {
   setTimeout(function() {
     card.classList.toggle("flip");
@@ -108,9 +94,6 @@ function hideCards(card1, card2) {
   card2.classList.toggle("shake");
 }
 
-/*
- *functions for showing and hiding the pop-up modal window
- */
 function showModal(moves) {
   setTimeout(function() {
     modalWindow.style.display = "flex";
@@ -124,11 +107,6 @@ function showModal(moves) {
 function hideModal() {
   modalWindow.style.display = "none";
 }
-
-/*
- * function for decreasing the stars score
- * function for reseting stars to initial value - 3 full stars
- */
 
 function decreaseStar(moves) {
   if (moves > 15) {
@@ -201,9 +179,6 @@ function game() {
   });
 }
 
-/*
- * function for a new game
- */
 function replay() {
   hideModal();
   removeCards();
@@ -228,18 +203,12 @@ document.addEventListener("DOMContentLoaded", function() {
   game();
 });
 
-/*
- * event listener for the reply button above the deck of cards
- */
 replyBtn.forEach(function(btn) {
   btn.addEventListener("click", function() {
     replay();
   });
 });
 
-/*
- * event listener for the close button on modal pop-up window
- */
 closeBtn.addEventListener("click", function() {
   hideModal();
 });
@@ -247,8 +216,3 @@ closeBtn.addEventListener("click", function() {
 modalWindow.addEventListener("click", function() {
   hideModal();
 });
-
-/* TODO:
- * -- implement timer and add time in modal
- * -- put replay button into modal
- */
