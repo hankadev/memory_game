@@ -4,6 +4,9 @@ let modalWindow = document.querySelector(".modal");
 let closeBtn = document.querySelector(".closeBtn");
 let flippedCards = [];
 let counter = 0;
+let seconds = 0;
+let minutes = document.querySelector(".minutes");
+let secondes = document.querySelector(".secondes");
 let moves = document.querySelector(".moves");
 let matchedCards = 0;
 let cardsToFlip = 2;
@@ -153,12 +156,15 @@ function waitAndCheck(cardsArray) {
     moves.innerHTML = counter;
     decreaseStar(counter);
     if (matchedCards === 16) {
+      clearInterval(interval);
+      convertTime(seconds);
       showModal(counter);
     }
   }, 750);
 }
 
 let listen = function() {
+  startTimer();
   if (cardsToFlip > 0) {
     cardsToFlip -= 1;
     this.removeEventListener("click", listen);
@@ -171,8 +177,23 @@ let listen = function() {
   }
 };
 
+let interval;
+
+function startTimer() {
+  interval = setInterval(function() {
+    seconds += 1;
+  }, 1000);
+}
+
+function convertTime(seconds) {
+  const elapsedMinutes = Math.floor(seconds / 60);
+  minutes.innerHTML = elapsedMinutes;
+  const elapsedSecondes = seconds % 60;
+  secondes.innerHTML = elapsedSecondes;
+}
+
 function game() {
-  dealCards(cards)
+  dealCards(cards);
   let allCards = document.querySelectorAll(".card");
   allCards.forEach(function(card) {
     card.addEventListener("click", listen);
@@ -185,6 +206,7 @@ function replay() {
   resetStars();
   flippedCards = [];
   counter = 0;
+  let seconds = 0;
   moves.innerHTML = counter;
   matchedCards = 0;
   cardsToFlip = 2;
