@@ -13,5 +13,5 @@ This is my project for Front-End Web Developer Nanodegree Program.
 * Optional: Add CSS animations when cards are clicked, unsuccessfully matched, and successfully matched.
 
 ## Dependencies
-The project is using [Font Awesome](https://fontawesome.com/) and [Fredona One Google Font](https://fonts.google.com/specimen/Fredoka+One?selection.family=Fredoka+One).
+The project is using [Font Awesome](https://fontawesome.com/) and [Fredoka One Google Font](https://fonts.google.com/specimen/Fredoka+One?selection.family=Fredoka+One).
 This project is built using HTML, CSS (including Flexbox) and JavaScript. No libraries are used.
