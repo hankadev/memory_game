@@ -185,10 +185,10 @@ let startTimer = function() {
   this.removeEventListener("click", startTimer);
 };
 
-function convertTime(seconds) {
-  const elapsedMinutes = Math.floor(seconds / 60);
+function convertTime(sec) {
+  const elapsedMinutes = Math.floor(sec / 60);
   minutes.innerHTML = elapsedMinutes;
-  const elapsedSecondes = seconds % 60;
+  const elapsedSecondes = sec % 60;
   secondes.innerHTML = elapsedSecondes;
 }
 
