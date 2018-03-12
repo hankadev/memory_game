@@ -178,12 +178,13 @@ let listen = function() {
 
 let interval;
 
-function startTimer() {
+let startTimer = function() {
   interval = setInterval(function() {
     seconds += 1;
     console.log("seconds:", seconds);
   }, 1000);
-}
+  this.removeEventListener("click", startTimer);
+};
 
 function convertTime(seconds) {
   const elapsedMinutes = Math.floor(seconds / 60);
@@ -194,11 +195,11 @@ function convertTime(seconds) {
 
 function game() {
   dealCards(cards);
-  startTimer();
   let allCards = document.querySelectorAll(".card");
   allCards.forEach(function(card) {
     card.addEventListener("click", listen);
   });
+  deck.addEventListener("click", startTimer);
 }
 
 function replay() {
