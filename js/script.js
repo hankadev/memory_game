@@ -12,7 +12,6 @@ let matchedCards = 0;
 let cardsToFlip = 2;
 let fullStar = "<i class=\"fas fa-star\"></i>";
 let emptyStar = "<i class=\"far fa-star\"></i>";
-let star1 = document.querySelector(".star1");
 let star2 = document.querySelector(".star2");
 let star3 = document.querySelector(".star3");
 let scoreMoves = document.querySelector(".scoreMoves");
@@ -118,13 +117,9 @@ function decreaseStar(moves) {
   if (moves > 20) {
     star2.innerHTML = emptyStar;
   }
-  if (moves > 25) {
-    star1.innerHTML = emptyStar;
-  }
 }
 
 function resetStars() {
-  star1.innerHTML = fullStar;
   star2.innerHTML = fullStar;
   star3.innerHTML = fullStar;
 }
