@@ -4,7 +4,7 @@ let modalWindow = document.querySelector(".modal");
 let closeBtn = document.querySelector(".closeBtn");
 let flippedCards = [];
 let counter = 0;
-let seconds = 0;
+let time = 0;
 let minutes = document.querySelector(".minutes");
 let secondes = document.querySelector(".secondes");
 let moves = document.querySelector(".moves");
@@ -103,6 +103,9 @@ function showModal(moves) {
     let scoreStars = document.querySelector(".scoreStars");
     let stars = document.querySelector(".stars");
     scoreStars.innerHTML = stars.innerHTML;
+    let gameTime = document.querySelector(".gameTime");
+    let modalTime = document.querySelector(".modalTime");
+    modalTime.innerHTML = gameTime.innerHTML;
   }, 1000);
 }
 
@@ -152,7 +155,6 @@ function waitAndCheck(cardsArray) {
     decreaseStar(counter);
     if (matchedCards === 16) {
       clearInterval(interval);
-      convertTime(seconds);
       showModal(counter);
     }
   }, 750);
@@ -175,9 +177,10 @@ let interval;
 
 let startTimer = function() {
   interval = setInterval(function() {
-    seconds += 1;
+    time += 1;
+    convertTime(time);
   }, 1000);
-  this.removeEventListener("click", startTimer);
+  deck.removeEventListener("click", startTimer);
 };
 
 function convertTime(sec) {
@@ -193,7 +196,6 @@ function game() {
   allCards.forEach(function(card) {
     card.addEventListener("click", listen);
   });
-  deck.addEventListener("click", startTimer);
 }
 
 function replay() {
@@ -202,11 +204,15 @@ function replay() {
   resetStars();
   flippedCards = [];
   counter = 0;
-  seconds = 0;
+  time = 0;
   moves.innerHTML = counter;
+  minutes.innerHTML = 0;
+  secondes.innerHTML = 0;
   matchedCards = 0;
   cardsToFlip = 2;
   game();
+  clearInterval(interval);
+  deck.addEventListener("click", startTimer);
 }
 
 function turnEffect(card) {
@@ -219,6 +225,7 @@ function turnEffect(card) {
  */
 document.addEventListener("DOMContentLoaded", function() {
   game();
+  deck.addEventListener("click", startTimer);
 });
 
 replyBtn.forEach(function(btn) {
