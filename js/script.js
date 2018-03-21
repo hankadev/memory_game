@@ -1,5 +1,5 @@
 (function() {
-  'use strict';
+  "use strict";
   let deck = document.querySelector(".deck");
   let replyBtn = document.querySelectorAll(".replay");
   let modalWindow = document.querySelector(".modal");
@@ -17,32 +17,13 @@
   let star2 = document.querySelector(".star2");
   let star3 = document.querySelector(".star3");
   let scoreMoves = document.querySelector(".scoreMoves");
-  let cards = ["<i class=\"fas fa-gamepad\"></i>",
-    "<i class=\"fas fa-gamepad\"></i>",
-    "<i class=\"fas fa-ambulance\"></i>",
-    "<i class=\"fas fa-ambulance\"></i>",
-    "<i class=\"fas fa-birthday-cake\"></i>",
-    "<i class=\"fas fa-birthday-cake\"></i>",
-    "<i class=\"fas fa-chess\"></i>",
-    "<i class=\"fas fa-chess\"></i>",
-    "<i class=\"fab fa-fort-awesome\"></i>",
-    "<i class=\"fab fa-fort-awesome\"></i>",
-    "<i class=\"fas fa-bomb\"></i>",
-    "<i class=\"fas fa-bomb\"></i>",
-    "<i class=\"fas fa-plane\"></i>",
-    "<i class=\"fas fa-plane\"></i>",
-    "<i class=\"fas fa-university\"></i>",
-    "<i class=\"fas fa-university\"></i>"
-  ];
-
+  let cards = ["<i class=\"fas fa-gamepad\"></i>", "<i class=\"fas fa-gamepad\"></i>", "<i class=\"fas fa-ambulance\"></i>", "<i class=\"fas fa-ambulance\"></i>", "<i class=\"fas fa-birthday-cake\"></i>", "<i class=\"fas fa-birthday-cake\"></i>", "<i class=\"fas fa-chess\"></i>", "<i class=\"fas fa-chess\"></i>", "<i class=\"fab fa-fort-awesome\"></i>", "<i class=\"fab fa-fort-awesome\"></i>", "<i class=\"fas fa-bomb\"></i>", "<i class=\"fas fa-bomb\"></i>", "<i class=\"fas fa-plane\"></i>", "<i class=\"fas fa-plane\"></i>", "<i class=\"fas fa-university\"></i>", "<i class=\"fas fa-university\"></i>"];
   /*
    * shuffle function from http://stackoverflow.com/a/2450976
    */
-
   function shuffle(array) {
     let currentIndex = array.length,
       temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -50,7 +31,6 @@
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-
     return array;
   }
 
@@ -65,7 +45,7 @@
     }
   }
 
-  function removeCards(cards) {
+  function removeCards() {
     let cardsToRemove = document.querySelectorAll(".card");
     for (let i = 0; i < cardsToRemove.length; i++) {
       cardsToRemove[i].remove();
@@ -128,7 +108,6 @@
     star2.innerHTML = fullStar;
     star3.innerHTML = fullStar;
   }
-
   /*
    * function has as argument an array of flipped cardsArray
    * shows both card for a second (750 miliseconds)
@@ -161,7 +140,6 @@
       }
     }, 750);
   }
-
   let listen = function() {
     if (cardsToFlip > 0) {
       cardsToFlip -= 1;
@@ -174,9 +152,7 @@
       waitAndCheck(flippedCards);
     }
   };
-
   let interval;
-
   let startTimer = function() {
     interval = setInterval(function() {
       time += 1;
@@ -216,11 +192,6 @@
     clearInterval(interval);
     deck.addEventListener("click", startTimer);
   }
-
-  function turnEffect(card) {
-    card.style.transform
-  }
-
   /*
    * automatically deal cards when page is loaded
    * automatically start a new game
@@ -229,17 +200,14 @@
     game();
     deck.addEventListener("click", startTimer);
   });
-
   replyBtn.forEach(function(btn) {
     btn.addEventListener("click", function() {
       replay();
     });
   });
-
   closeBtn.addEventListener("click", function() {
     hideModal();
   });
-
   modalWindow.addEventListener("click", function() {
     hideModal();
   });
