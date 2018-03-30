@@ -17,7 +17,14 @@
   let star2 = document.querySelector(".star2");
   let star3 = document.querySelector(".star3");
   let scoreMoves = document.querySelector(".scoreMoves");
-  let cards = ["<i class=\"fas fa-gamepad\"></i>", "<i class=\"fas fa-gamepad\"></i>", "<i class=\"fas fa-ambulance\"></i>", "<i class=\"fas fa-ambulance\"></i>", "<i class=\"fas fa-birthday-cake\"></i>", "<i class=\"fas fa-birthday-cake\"></i>", "<i class=\"fas fa-chess\"></i>", "<i class=\"fas fa-chess\"></i>", "<i class=\"fab fa-fort-awesome\"></i>", "<i class=\"fab fa-fort-awesome\"></i>", "<i class=\"fas fa-bomb\"></i>", "<i class=\"fas fa-bomb\"></i>", "<i class=\"fas fa-plane\"></i>", "<i class=\"fas fa-plane\"></i>", "<i class=\"fas fa-university\"></i>", "<i class=\"fas fa-university\"></i>"];
+  let cards = ["img/panda.png", "img/panda.png",
+    "img/elephant.png", "img/elephant.png",
+    "img/bear.png", "img/bear.png",
+    "img/koala.png", "img/koala.png",
+    "img/hippo.png", "img/hippo.png",
+    "img/gorilla.png", "img/gorilla.png",
+    "img/walrus.png", "img/walrus.png",
+    "img/tiger.png", "img/tiger.png"];
   /*
    * shuffle function from http://stackoverflow.com/a/2450976
    */
@@ -39,8 +46,8 @@
     for (let i = 0; i < cards.length; i++) {
       let cardItem = document.createElement("div");
       cardItem.className = "card";
-      let icon = cards[i];
-      cardItem.innerHTML = icon;
+      let source = cards[i];
+      cardItem.innerHTML = "<img src=\"" + source + "\">";
       deck.appendChild(cardItem);
     }
   }
@@ -56,6 +63,7 @@
     setTimeout(function() {
       card.classList.toggle("flip");
       card.classList.add("show");
+      card.firstElementChild.style.visibility = "visible";
       flippedCards.push(card);
     }, 300);
   }
@@ -69,8 +77,10 @@
   function hideCards(card1, card2) {
     setTimeout(function() {
       card1.classList.remove("show");
+      card1.firstElementChild.style.visibility = "hidden";
       card1.classList.toggle("shake");
       card2.classList.remove("show");
+      card2.firstElementChild.style.visibility = "hidden";
       card2.classList.toggle("shake");
       flippedCards = [];
     }, 750);

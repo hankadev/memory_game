@@ -2,6 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Fredoka One", cursive;
+  background-image: url("../img/landscape.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .container {
@@ -41,7 +45,7 @@ body {
   cursor: pointer;
   border: none;
   color: #fff;
-  background-color: #d05;
+  background-color: #527;
 }
 
 .score p {
@@ -73,7 +77,7 @@ body {
   z-index: 3;
   background-color: #fff;
   opacity: 1;
-  border: 6px solid #d05;
+  border: 6px solid #527;
   border-radius: 5px;
 }
 
@@ -95,7 +99,7 @@ body {
   font-size: 1.5em;
   padding-bottom: 10px;
   margin-top: 0;
-  color: #d05;
+  color: #527;
 }
 
 .thumb {
@@ -125,8 +129,8 @@ body {
   align-items: center;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  background: -webkit-gradient(linear, left top, right bottom, from(#84c), to(#d05));
-  background: linear-gradient(to bottom right, #84c, #d05);
+  background: -webkit-gradient(linear, left top, right bottom, from(#08f), to(#b8f));
+  background: linear-gradient(to bottom right, #08f, #b8f);
   border: 1px solid #fff;
   border-radius: 5px;
 }
@@ -152,6 +156,10 @@ body {
   cursor: pointer;
 }
 
+.card img {
+  visibility: hidden;
+}
+
 .flip {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
@@ -171,7 +179,7 @@ body {
 }
 
 .matched {
-  background-color: #99f;
+  background-color: #6cf;
   cursor: default;
   -webkit-animation-name: match;
   animation-name: match;
