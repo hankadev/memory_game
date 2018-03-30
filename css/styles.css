@@ -131,7 +131,7 @@ body {
   justify-content: space-around;
   background: -webkit-gradient(linear, left top, right bottom, from(#08f), to(#b8f));
   background: linear-gradient(to bottom right, #08f, #b8f);
-  border: 1px solid #fff;
+  border: 5px solid #fff;
   border-radius: 5px;
 }
 
@@ -151,9 +151,23 @@ body {
   color: #527;
   font-size: 2rem;
   background-color: #527;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media all and (max-width: 550px) {
+  body {
+    background-size: auto 100%;
+  }
+  .deck {
+    height: 300px;
+    width: 300px;
+  }
+  .card {
+    height: 60px;
+    width: 60px;
+  }
 }
 
 .card img {
