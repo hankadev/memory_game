@@ -162,6 +162,7 @@
       waitAndCheck(flippedCards);
     }
   };
+
   let interval;
   let startTimer = function() {
     interval = setInterval(function() {
@@ -183,6 +184,9 @@
     let allCards = document.querySelectorAll(".card");
     allCards.forEach(function(card) {
       card.addEventListener("click", listen);
+      card.addEventListener("mousedown", function(e) {
+        e.preventDefault();
+      });
     });
   }
 
