@@ -16,5 +16,7 @@ This is my project for Udacity's Front-End Web Developer Nanodegree Program.
 The project is using [Font Awesome](https://fontawesome.com/) and [Fredoka One Google Font](https://fonts.google.com/specimen/Fredoka+One?selection.family=Fredoka+One).
 This project is built using HTML, CSS (including Flexbox) and JavaScript. No libraries are used.
 
+Web browser: Google Chrome (recommended), Mozilla Firefox
+
 ## Images
 [Background image](https://www.freepik.com/free-vector/landscape-background-design_1134710.htm) and all animal images used for [cards](https://www.flaticon.com/packs/wildlife-14) are from Freepik.com.
