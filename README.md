@@ -1,7 +1,7 @@
 # Memory Game project
 This is my project for Udacity's Front-End Web Developer Nanodegree Program.
 
-[view project in browser](https://hanny21.github.io/memory_game/)
+[view project in browser](https://hankadev.github.io/memory_game/)
 
 ## Project Criterias
 * The game randomly shuffles the cards. A user wins once all cards have successfully been matched.
